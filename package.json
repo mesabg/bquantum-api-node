@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node -- src/server.js",
+    "postinstall": "npm install renderjson bootstrap@4.0.0-alpha.6 jquery tether --prefix=./src/public --verbose",
+    "start": "nodemon --watch src --exec npm run serve",
     "lint": "eslint src/",
-    "build": "babel src -d dist && node dist/server.js"
+    "build": "sh compile.sh",
+    "preserve": "npm run build",
+    "serve": "node dist/server.js"
   },
   "author": "Moisés Berenguer",
   "license": "ISC",
@@ -25,7 +28,8 @@
     "body-parser": "^1.18.2",
     "crypto-js": "^3.1.9-1",
     "dotenv": "^4.0.0",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "hbs": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^4.13.1",
@@ -46,6 +50,10 @@
           "matchPattern": "config"
         }
       ]
+    ],
+    "ignore": [
+      "./src/public",
+      "./src/views"
     ]
   },
   "eslintConfig": {
