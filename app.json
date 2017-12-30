@@ -1,0 +1,7 @@
+{
+    "name": "bbquantum-nodejs",
+    "description": "BQuantum NodeJS API",
+    "repository": "https://github.com/mesabg/bquantum-api-node.git/",
+    "keywords": ["API", "BQuantum", "Heroku"],
+    "image": "heroku/nodejs"
+}
