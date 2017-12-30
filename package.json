@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm install renderjson bootstrap@4.0.0-alpha.6 jquery tether --prefix=./src/public --verbose",
-    "start": "nodemon --watch src --exec npm run serve",
+    "start": "nodemon --watch src -e * --exec npm run serve",
     "lint": "eslint src/",
     "build": "sh compile.sh",
     "preserve": "npm run build",

@@ -85,7 +85,7 @@ class BQuantum {
 			ammount: 121300
 		}, hashKey = "ww"){
 
-		let hashContent = `${data.commerceId}${data.commerceSaleIdentifier}${data.description}${data.ammount}`;
+		let hashContent = `${content.commerceId}${content.commerceSaleIdentifier}${content.description}${content.ammount}`;
 		console.log("Hash content :: ", hashContent);
 		let hash = CryptoJS.HmacSHA1(hashContent, hashKey);
 		let hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
@@ -93,6 +93,16 @@ class BQuantum {
 		return hashInBase64;
 	}
 
+	updateHash(hashKey){
+		//-- Generate Hash
+		this.model.informationHash = this.generateHash({
+			commerceId: this.model.commerce.commerceId,
+			commerceSaleIdentifier: this.model.commerceSaleIdentifier,
+			description: this.model.description,
+			ammount: this.model.ammount.valueMoney
+		}, hashKey);
+		return this.model;
+	}
 
 	async payment(data, hashKey){
 		

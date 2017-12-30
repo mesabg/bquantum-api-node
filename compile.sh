@@ -10,5 +10,3 @@ cp -r src/public dist/public
 cp -r src/views dist/views
 
 echo "Compilation process ended...";
-
-#babel-node -- src/server.js

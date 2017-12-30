@@ -7,25 +7,94 @@
     <title>Test BQuantum</title>
     <link rel="stylesheet" href="public/node_modules/tether/dist/css/tether.min.css">
     <link rel="stylesheet" href="public/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #444444;
+            color: #eeeeee;
+        }
+        span.key { color: aquamarine !important; }
+        span.string { color: orange !important; }
+        span.number { color: #0275d8 !important; }
+        span.syntax { color: #eeeeee !important; }
+        span.keyword { color: #06EF11 !important; }
+        a.disclosure { text-decoration: none; color: #0275d8; }
+        [text-center] { text-align: center; }
+        .bordered {
+            border-radius: 10px 10px 10px 10px;
+            -moz-border-radius: 10px 10px 10px 10px;
+            -webkit-border-radius: 10px 10px 10px 10px;
+            border: 1px solid #cccccc;
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
-    <h1> Hi guys </h1>
-    
-    <!--
-    <form method="post" action="//gateway.payulatam.com/ppp-web-gateway/pb.zul">
-        <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_pequeno.png" onclick="this.form.urlOrigen.value = window.location.href;"/>
-        <br>
-        {{#each data}}
-            <label for="{{this.name}}">{{this.name}}</label>
-            <input id="{{this.name}}" name="{{this.name}}" type="text" value="{{this.value}}"> <br>
-        {{/each}}
-        <input name="Submit"        type="submit"  value="Enviar" >
-    </form> -->
+    <br>
+    <h1 text-center> BQuantum tester </h1>
 
-<script src="public/node_modules/jquery/dist/jquery.min.js"></script>
-<script src="public/node_modules/tether/dist/js/tether.min.js"></script>
-<script src="public/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="public/node_modules/renderjson/renderjson.js"></script>
-<script src="public/scripts/process.js"></script>
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <h3> <strong> <i> Update json data </i> </strong> </h3>
+                </div>
+            </div>
+            <form id="update-json" class="row justify-content-center">
+                {{#each form}}
+                    <div class="form-group col-10 bordered">
+                        <label for="{{this.name}}"> <i>{{this.name}}</i> </label>
+                        <input id="{{this.name}}" name="{{this.name}}" type="{{this.type}}" value="{{this.value}}" class="form-control" aria-describedby="{{this.name}}" required>
+                        <small id="{{this.name}}" class="form-text">{{this.type}}.</small>
+                    </div>
+                {{/each}}
+                <button type="submit" class="btn btn-primary col-6">Submit</button>
+            </form>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <h3> <strong> <i> JSON to be sent </i> </strong> </h3>
+                </div>
+                <div class="col-10">
+                    <div id="json-data"></div>
+                </div>
+                <button id="send-json" class="btn btn-primary col-6">Send to BQ Api</button>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <h3> <strong> <i> BQ Payment method response </i> </strong> </h3>
+                </div>
+                <div class="col-10">
+                    <div id="json-response"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    
+
+
+    <script src="public/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="public/node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="public/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="public/node_modules/renderjson/renderjson.js"></script>
+    <script src="public/scripts/process.js"></script>
 </body>
 </html>
